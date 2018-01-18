@@ -1,0 +1,36 @@
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="lib/angular.min.js"></script>
+    <script src="js/principalCtrl.js"></script>
+    <script src="lib/jquery.min.js"></script>
+    <style>
+        .posterStyle{
+            width: 1200px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <div class="container">
+
+        <div class="container text-center">
+            <h1>A new experience for series fans</h1>
+            <p>ProjectSeries it's intended for series fans who want to make the most of all possible series without worrying about remembering where you stopped watching.
+                To meet this problem, ProjectSeries keeps track of everything you watch and determines what the next episode for you to watch your series.</p>
+            </div>
+            <hr>
+        </div>
+        <!-- Example row of columns -->
+        <div class="container text-center">
+            <h2>Added Series:</h2>
+        </div>
+        <div id="homeseries" class="row">
+
+            <div class="posterStyle" ng-controller="principalCtrl">
+                <p><img ng-repeat="cat in categoria" src="img/{{cat.img_poster}}" height="300" width="200" alt="posterserie"></p>
+                
+            </div>
+        </div>
+        <div ng-include="'view/components/footer.html'"></div>
+    </div> <!-- /container -->

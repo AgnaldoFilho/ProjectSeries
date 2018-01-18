@@ -1,0 +1,44 @@
+ <script src="lib/angular.min.js"></script>
+ <script src="js/Controller/userCtrl.js"></script>
+ <script src="js/Services/usuarioAPIService.js"></script>
+ <style>    
+  /* Set black background color, white text and some padding */
+  footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+  }
+</style>
+</head>
+<body>
+  
+  <div class="container text-center">    
+    <div class="row">
+      <div class="col-sm-3 well">
+        <div class="well">
+          <h1 ng-repeat="user in usuario">{{user.first_name}} {{user.last_name}}</h1>
+        </div>
+        <div class="well">
+         <h3>Total de Episódios assistidos:</h3>
+         <h2>{{status.length}}</h2>
+       </div>
+     </div>
+     <div class="col-sm-7">
+       <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default text-left">
+            <div class="panel-body">
+              <h2><p contenteditable="true">Last episodes watched:</p></h2>
+              <div ng-repeat="st in status">
+               <p>{{st.name_series}} >> Season {{st.num_temporada}} Episode {{st.num_episodio}}</p>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>    
+ </div>
+</div>
+</div>
+
+<div ng-include="'view/components/footer.html'"></div>

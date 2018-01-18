@@ -1,0 +1,42 @@
+	<link rel="stylesheet" href="lib/bootstrap.min.css">
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/bootstrap.min.js"></script>
+	<script src="lib/angular.min.js"></script>
+	<script src="lib/statusSeriesCtrl.js"></script>
+	<script src="lib/seriesCtrl.js"></script>
+	<style>
+		.selecionado{
+			background-color: green;
+		}
+	</style>
+<div class="container-fluid text-center"> 
+<div class="row content">
+			<div ng-controller="seriesCtrl" class="col-sm-2 sidenav">
+				<div>
+					<p><img ng-repeat="serie in series" src="img/{{serie.img_poster}}" height="300" width="200" alt="posterserie"></p>
+				</div>
+				<div>
+					<h3 ng-repeat="serie in series">{{serie.name_series}}</h3>
+				</div>
+				<p>(2011-presente)</p>
+				</div>
+			<div class="col-sm-8 text-left">
+				<div class="jumbotron">
+				<center><h2>Marque seus episódios assistidos</h2><center>
+				<hr>
+				<table class="table">
+					<tr>
+						<th></th>
+						<th>Temporadas</th>
+						<th>Episódios</th>
+						<tr ng-class="{selecionado: ep.selecionado}" ng-repeat="ep in epSerie">
+							<td><input type="checkbox" ng-model="ep.selecionado"/></td>
+							<td>{{ep.num_temporada}}</td>
+							<td>{{ep.num_episodio}}</td>
+					</tr>
+				</tr>
+				</table>
+				</div>
+			</div>
+</div>
+</div>

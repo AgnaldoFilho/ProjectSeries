@@ -1,0 +1,70 @@
+
+<script src="lib/jquery.min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<script src="lib/angular.min.js"></script>
+<script src="js/Controller/seriesCtrl.js"></script>
+<script src="js/Directives/series.js"></script>
+<style src="css/styleseries.css"></style>
+<style>
+	.selecionado{
+		background-color: #bbbfce;
+	}
+</style>
+</head>
+
+
+<div class="container-fluid text-center">    
+	<div class="row content">
+		<div class="col-sm-2 sidenav">
+			<p><img ng-repeat="s in serie" src="img/{{s.img_poster}}" height="300" width="200" alt="posterserie"></p>
+			<div>
+				<h3 ng-repeat="s in serie">{{s.name_series}}</h3>
+			</div>
+			<p ng-repeat="s in serie">Release Year: {{s.year_series}}</p>
+			<a class="btn btn-primary btn-block" ng-model="adicionar" ng-click="adicionarEpisodios()">Add episodes</a>
+		</div>
+		<div class="col-sm-8 text-left">
+			<h1>Synopsis</h1>
+			<div>
+				<p ng-repeat="s in serie">{{s.synopsis}}</p>
+			</div>
+			<hr>
+			<div class="jumbotron">
+				<center><h2>Mark your watched episodes</h2><center>
+					<hr>
+					<table class="table">
+						<tr>
+							<th>Seasons</th>
+							<tr ng-class="{selecionado: temp.checkbox.value}" ng-repeat="temp in serieEp">
+								<td><input type="checkbox" ng-model="temp.checkbox.value"/></td>
+								<td>Season: {{temp.temporada}}
+									<td>
+										<table ng-if="temp.checkbox.value" class="table">
+											<th>Episodes</th>
+											<!--<th>Select All: <input type="checkbox" ng-model=allEp ng-click="checkAll(temp)" /></th>-->
+											<tr ng-class="{selecionado: ep.checkbox.value}" ng-repeat="ep in temp.episodios">
+												<td><input type="checkbox" ng-model="ep.checkbox.value"/></td>
+												<td>Episode: {{ep.episodio}}</td>
+											</tr>
+										</table>
+									</td>
+								</td>
+
+							</tr>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="col-sm-2 sidenav">
+				<h2>Writer:</h2>
+				<div class="list-group" ng-repeat="esc in escritorSerie">
+					<p class="list-group-item">{{esc.nme_escritor}}</p>
+				</div>
+				<h2>Actors:</h2>
+				<div class="list-group" ng-repeat="atores in atorSerie">
+					<p class="list-group-item">{{atores.nme_ator}}</p>
+				</div>
+			</div>
+		</div>
+
+		<div ng-include="'view/components/footer.html'"></div>
